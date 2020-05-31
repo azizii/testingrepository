@@ -1,0 +1,109 @@
+﻿@model testingproj.ViewModel.Foodviewmode
+@{
+    ViewData["Title"] = "FoodView";
+    Layout = null;
+}
+
+
+
+<div class="container">
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header"><a asp-action="CreateFood">Create food</a></div>
+         |
+        <div class="card-body">
+            <form enctype="multipart/form-data" asp-action="CreateFood">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+
+
+
+
+                    @*<select asp-for="foodCategory.FoodCategoryName" class ="form-control" asp-items="ViewBag.foodCategoryId"></select>*@
+                </div>
+
+
+
+                <div class="form-group">
+                    <label asp-for="foodName" class="control-label"></label>
+                    <input asp-for="foodName" class="form-control" />
+                    <span asp-validation-for="foodName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="price" class="control-label"></label>
+                    <input asp-for="price" class="form-control" />
+                    <span asp-validation-for="price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="foodCalories" class="control-label"></label>
+                    <input asp-for="foodCalories" class="form-control" />
+                    <span asp-validation-for="foodCalories" class="text-danger"></span>
+                </div>
+                @*<div class="form-group row">
+
+                    <label asp-for="photo" class="control-label"></label>
+
+                    <div class="col-12 col-md-9">
+                        <input asp-for="photo" id="file-input" name="file-input" class="form-control-file">
+                    </div>
+
+                </div>*@
+                <div class="form-group ">
+
+                    <label asp-for="photo" class="control-label"></label>
+                    <div class="custom-file">
+                        <input asp-for="photo" class="form-control custom-file-input" />
+                        <label class="custom-file-label">
+                            choose file
+                        </label>
+                    </div>
+
+                </div>
+
+
+
+
+                @*<div class="form-group">
+                    <label asp-for="foodCategoryId" class="control-label"></label>
+
+                    @Html.DropDownListFor(model => model.foodCategoryId, new SelectList(ViewBag.foodCategoryId, "Value", "Text"), new { @class = "dropdown-toggle btn btn-primary" })
+
+                    @*<select asp-for="foodCategory.FoodCategoryName" class ="form-control" asp-items="ViewBag.foodCategoryId"></select>
+                </div>*@
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group row">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+
+                @*@section Scripts {
+                    <script>
+                        $(document).ready(function () {
+                            $('.custom-file-input').on("change", function () {
+                                var fileName = $(this).val().split("\\").pop();
+                                $(this).next('.custom-file-label').html(fileName);
+                            });
+                        });
+                    </script>
+                }*@
+
+
+                @*<script>
+                    $('#inputGroupFile02').on('change', function () {
+                        //get the file name
+                        var fileName = $(this).val();
+                        //replace the "Choose a file" label
+                        $(this).next('.custom-file-label').html(fileName);
+                    })
+                </script>*@
+            </form>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+

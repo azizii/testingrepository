@@ -25,5 +25,10 @@ namespace testingproj.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public string Index1()
+        {
+            return "hello";
+        }
     }
 }

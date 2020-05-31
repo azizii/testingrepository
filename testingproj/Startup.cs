@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using testingproj.Models;
 
 namespace testingproj
 {
@@ -33,6 +35,15 @@ namespace testingproj
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+                services.AddDbContext<testingprojContext>(options =>
+                   options.UseSqlServer(Configuration.GetConnectionString("testingprojContextprod")));
+            else
+            services.AddDbContext<testingprojContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("testingprojContext")));
+
+            services.BuildServiceProvider().GetService<testingprojContext>().Database.Migrate();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

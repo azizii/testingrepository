@@ -1,0 +1,83 @@
+﻿@model IEnumerable<testingproj.Models.myfoods>
+
+@{
+    ViewData["Title"] = "FoodList";
+}
+
+<h1>FoodList</h1>
+
+<p>
+    <div class="card-header"><a asp-action="CreateFood">Create food</a></div>
+</p>
+
+
+@foreach (var item in Model)
+{
+
+    var photoPath = "~/Images/" + (item.photopath ?? "noimage.jpg");
+
+<div class="card rounded-circle" style="width: 20rem; height:27rem; text-align:center;display:inline-block;">
+
+    <p class="card-text">Calories: @item.photopath11</p>
+    <div class="card-block text-center ">
+        <p class="card-text">Calories: @item.photopath11</p>
+        <img class="card-img-top " title="Click to View Product detail"
+             style="cursor:pointer;height:200px;width:100%"
+             src="@photoPath" asp-append-version="true" style="border-radius:.60rem;" />
+        <h2 class="card-title">@item.myfoodsName</h2>
+        <p class="card-text">Calories: @item.foodCalories</p>
+        <p class="card-text">Calories: @item.photopath11</p>
+        @*<a class="ti-pencil-alt" asp-action="EditView" asp-route-id="@item.FoodId"></a> |
+            <a class="ti-layout-grid4" asp-action="Details" asp-route-id="@item.FoodId"></a> |
+            <a class="ti-close" asp-action="Delete" asp-route-id="@item.FoodId"></a>*@
+    </div>
+
+</div>
+}
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.myfoodsName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.foodCalories)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.photopath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.myfoodsName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.foodCalories)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.photopath)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.myfoodsId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.myfoodsId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.myfoodsId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
